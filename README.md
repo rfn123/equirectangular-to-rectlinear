@@ -2,6 +2,16 @@
 The c++ code uses OpenCV to read/ output the images.        
 The input should be a 2:1 360x180 degree field of view image to work properly.
 
+## Build & use code
+
+```
+mkdir build
+cd build
+make
+./equirectangular2rectlinear
+```
+If ```ENABLE_LOG``` is set to 1, a window will pop up, showing the original panorama. After pressing any key, the rectlinear image is generated and also shown in a window (might take 3-5 seconds)
+
 ## Extract rectlinear image from panorama
 
 The code merely concentrates on how to obtain a rectlinear image (undistorted for our human eye) manually without fancy 3D rendering and texture mapping. 
