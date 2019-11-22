@@ -2,7 +2,7 @@
 The c++ code uses OpenCV to read/ output the images.        
 The input should be a 2:1 360x180 degrees field of view image to work properly.
 
-####Update 11/23/2019
+#### Update 11/23/2019
 Realized how shitty the code was and refactored it a bit to make it much more readable and compatible to newer OpenCV versions. Still needs optimization though.
 
 ## Build & use code
