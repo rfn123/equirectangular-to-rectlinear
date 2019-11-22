@@ -4,7 +4,6 @@ project(equirectangular2rectlinear)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 find_package( OpenCV REQUIRED )
 
-set(SOURCE_FILES equirectangular2rectlinear.cpp)
-add_executable(equirectangular2rectlinear ${SOURCE_FILES})
+add_executable(equi2rect equi2rect.cpp)
 
-target_link_libraries(equirectangular2rectlinear ${OpenCV_LIBS} )
+target_link_libraries(equi2rect ${OpenCV_LIBS} )
