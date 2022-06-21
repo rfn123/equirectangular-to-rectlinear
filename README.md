@@ -1,6 +1,16 @@
-# Project an equirectlinear image back to rectlinear
+# Extract rectlinear image from panorama
+
+The code merely concentrates on how to obtain a rectlinear image (undistorted for our human eye) manually without fancy 3D rendering and texture mapping. 
+The maths behind this is pretty staight forward [1]: The panorama is reprojected on the final image plane by determining the normalized 3D ray for each pixel in the rectlinear output image and converting it to spherical coordinates.          
+With these spherical coordinates we obtain the latitude and longitude of the point on the sphere and compute the corresponding position on the equirectangular panorama to determine the source pixel intensity value.
+After acquiring the correspondence between output image pixel and equirectangular source pixel,
+bilinear interpolation is used to reproject the image.
+
 The c++ code uses OpenCV (>= 3.0) to read/ output the images.        
-The input should be a 2:1 360x180 degrees field of view image to work properly.
+The input image should be a 2:1 360x180 degrees field of view image to work properly.
+
+[1]: Szeliski book "Computer Vision: Algorithms and Applications" p439
+
 
 # Required dependencies
 - OpenCV >= 3.0 (should be compiled with GUI support, using e.g. libgtk2.0, otherwise `cv::imshow` will fail)
@@ -38,13 +48,3 @@ viewport:
   tilt_angle: 0.174533
   width: 960 # px
 ```
-
-# Extract rectlinear image from panorama
-
-The code merely concentrates on how to obtain a rectlinear image (undistorted for our human eye) manually without fancy 3D rendering and texture mapping. 
-The maths behind this is pretty staight forward [1]: The panorama is reprojected on the final image plane by determining the normalized 3D ray for each pixel in the rectlinear output image and converting it to spherical coordinates. 
-With these spherical coordinates we obtain the latitude and longitude of the point on the sphere and compute the corresponding position on the equirectangular panorama to determine the source pixel intensity value.
-After acquiring the correspondence between output image pixel and equirectangular source pixel,
-bilinear interpolation is used to reproject the image.
-
-[1]: Szeliski book "Computer Vision: Algorithms and Applications" p439
