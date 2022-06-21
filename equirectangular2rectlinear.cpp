@@ -6,7 +6,7 @@
 #include <time.h>
 
 #define pi 3.14159265
-#define ENABLE_LOG 1 
+#define ENABLE_LOG 1
 #define LOG(msg) std::cout << msg << std::endl 
 
 using namespace cv;
@@ -83,7 +83,7 @@ pair<double, double> reprojection(int x_img, int y_img, double f, Mat Rot, int w
     phi = atan2(xp,zp);
 
     //get 2D point on equirectangular map
-    x_sphere = (((phi*w1)/pi+w1)/2; 
+    x_sphere = (((phi*w1)/pi+w1)/2); 
     y_sphere = (theta+ pi/2)*h1/pi;
 
     return make_pair(x_sphere,y_sphere);
@@ -113,7 +113,7 @@ int main(int argc, const char** argv) {
 
     Mat img_interp(1080,960, CV_8UC3, Scalar(0,0,0));
 
-    Mat img_src = imread("/images/pano.jpg",CV_LOAD_IMAGE_COLOR);
+    Mat img_src = imread("../images/pano.jpg",CV_LOAD_IMAGE_COLOR);
 
     if(img_src.empty()) 
     {
