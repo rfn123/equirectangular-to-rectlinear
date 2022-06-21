@@ -1,7 +1,9 @@
 # Extract rectlinear image from panorama
 
-The code merely concentrates on how to obtain a rectlinear image (undistorted for our human eye) manually without fancy 3D rendering and texture mapping. 
-The maths behind this is pretty staight forward [1]: The panorama is reprojected on the final image plane by determining the normalized 3D ray for each pixel in the rectlinear output image and converting it to spherical coordinates.          
+**Disclaimer:** The code merely concentrates on how to obtain a rectlinear image (undistorted for our human eye) manually without fancy 3D rendering and texture mapping. It is not optimized to be efficient, just a small experiment project to understand the theory better.
+
+
+The maths behind the reprojection is pretty staight forward [1]: The panorama is reprojected on the final image plane by determining the normalized 3D ray for each pixel in the rectlinear output image and converting it to spherical coordinates.          
 With these spherical coordinates we obtain the latitude and longitude of the point on the sphere and compute the corresponding position on the equirectangular panorama to determine the source pixel intensity value.
 After acquiring the correspondence between output image pixel and equirectangular source pixel,
 bilinear interpolation is used to reproject the image.
