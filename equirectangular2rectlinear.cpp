@@ -6,7 +6,7 @@
 #include <time.h>
 
 #define pi 3.14159265
-#define ENABLE_LOG 0 //if set to 1 then images (including intermediate results) are shown in a pop-up window
+#define ENABLE_LOG 1 
 #define LOG(msg) std::cout << msg << std::endl 
 
 using namespace cv;
@@ -103,8 +103,7 @@ int main(int argc, const char** argv) {
     Rot = eul2rotm(pitch,yaw,roll);
 
     //specify focal length of the final pinhole image
-    //f=831.6; //60deg fov
-    f=672; //110deg fov
+    f=672;
 
     // create camera matrix K
     K = (Mat_<double>(3,3) << f,0,w/2,
@@ -112,11 +111,8 @@ int main(int argc, const char** argv) {
          0,0,1);
 //_______________________________________________________________________________________________________
 
-    //initialize output image of the size 960x1080
-    //pixels are painted black for initialization
     Mat img_interp(1080,960, CV_8UC3, Scalar(0,0,0));
 
-    //read pano image
     Mat img_src = imread("/images/pano.jpg",CV_LOAD_IMAGE_COLOR);
 
     if(img_src.empty()) 
