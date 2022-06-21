@@ -14,11 +14,12 @@ class Equi2Rect
 public:
     Equi2Rect()
     {
+        // viewport size
         w = 960;
         h = 1080;
 
         //specify viewing direction
-        yaw = radians(20.0);  //pan
+        yaw = radians(20.0);   //pan
         pitch = radians(10.0); //tilt
         roll = radians(0.0);
 
@@ -92,9 +93,9 @@ std::pair<double, double> Equi2Rect::reprojection(int x_img, int y_img)
     ray3d = RK * xyz_norm;
 
     //get 3d spherical coordinates
-    xp = ray3d.at<double>(0, 0);
-    yp = ray3d.at<double>(0, 1);
-    zp = ray3d.at<double>(0, 2);
+    xp = ray3d.at<double>(0);
+    yp = ray3d.at<double>(1);
+    zp = ray3d.at<double>(2);
     //inverse formula for spherical projection, reference Szeliski book "Computer Vision: Algorithms and Applications" p439.
     theta = atan2(yp, sqrt(xp * xp + zp * zp));
     phi = atan2(xp, zp);
@@ -177,7 +178,7 @@ int main(int argc, const char **argv)
 
     printf("Time taken: %.2fs\n", (double)(clock() - tStart) / CLOCKS_PER_SEC);
 
-    cv::imwrite( "../images/pano_rect.jpg", equi2rect.img_interp);
+    cv::imwrite("../images/pano_rect.jpg", equi2rect.img_interp);
 
 #if ENABLE_LOG
     cv::namedWindow("image", cv::WINDOW_AUTOSIZE);
