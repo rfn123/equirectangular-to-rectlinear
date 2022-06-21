@@ -1,0 +1,11 @@
+camera:
+  focal_length: 672
+files:
+  img_dst_path: images/pano_rect.jpg
+  img_src_path: images/pano.jpg
+viewport:
+  height: 1080
+  pan_angle: 0.349066
+  roll_angle: 0.0
+  tilt_angle: 0.174533
+  width: 960
